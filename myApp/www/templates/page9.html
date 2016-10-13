@@ -11,17 +11,18 @@
   		Edit Assignment
 	</a>
 
+	<ion-scroll direction="y" style ="height: 250px">
+		<div class="list list-inset">
 
-	<div class="list list-inset">
+		  <div class="item item-button">
+		    
+		    <ion-item ng-repeat="assignment in assignments" ">
+	        	{{assignment.title}}
+	      	</ion-item>
+		  </div>
 
-	  <div class="item item-button">
-	    
-	    <button class="button button-block">
-	      Assignment 1
-	    </button>
-	  </div>
-
-	</div>
+		</div>
+	</ion-scroll>
 
 	<div class="bar">
 	  <button class="button button-block">Class Home</button>
