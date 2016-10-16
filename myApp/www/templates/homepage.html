@@ -1,0 +1,19 @@
+<ion-view view-title="Home">
+    <ion-content align="center">
+        <h1>My Classes</h1>
+            <div>
+                <button class="button button-block button-positive"
+                    ng-repeat="course in courses"
+                    onclick="window.location.href='#/app/homepage/{{ course.id }}'">
+                    {{ course.title }}
+                </button>
+            </div>
+            <div>
+                <button class="button button-block button-positive">
+                    Add a course
+                </button>
+        <a href="http://www.epichighered.com">
+            <img border="1" alt="epichighered" src="/img/epichighered.png">
+        </a>
+    </ion-content>
+</ion-view>
