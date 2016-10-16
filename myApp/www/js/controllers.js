@@ -42,17 +42,5 @@ angular.module('GradingApp.controllers', [])
     ];
 })
 
-.controller('CourseCtrl', function($scope $stateParams) {
-}
-
-.factory('setName', function() {
-    var name;
-    return {
-        set: function(val) {
-            this.name = val;
-        }
-        get: function() {
-            return this.name;
-        }
-    }
+.controller('CourseCtrl', function($scope, $stateParams) {
 });

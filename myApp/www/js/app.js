@@ -36,12 +36,6 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
         controller: 'AppCtrl'
     })
 
-/*
-  .state('app.search', { url: '/search', views: {
-      'menuContent': { templateUrl: 'templates/search.html' } } })
-  .state('app.homepage', { url: '/homepage',
-      views: { 'menuContent': { templateUrl: 'templates/homepage.html' } } })
-*/
     .state('app.browse', {
         url: '/browse',
         views: {
