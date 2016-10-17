@@ -58,7 +58,30 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-
+    .state('app.page8', {
+           url: '/page8',
+                views: {
+               'menuContent': {
+                 templateUrl: 'templates/page8.html'
+             }
+          }
+    })
+    .state('app.wuttup', {
+      url: '/wuttup',
+      views: {
+        'menuContent': {
+	  templateUrl: 'templates/page3.html'
+	  }
+      }
+    })
+    .state('app.page6', {
+          url: '/page6',
+	        views: {
+		        'menuContent': {
+			          templateUrl: 'templates/page6.html'
+				            }
+					          }
+						      })
   .state('app.single', {
     url: '/playlists/:playlistId',
     views: {
