@@ -36,9 +36,27 @@ angular.module('GradingApp.controllers', [])
 
 .controller('HomePageCtrl', function($scope) {
     $scope.courses = [
-        { title: 'ExampleCourse', id: 1 },
+        { title: 'ExampleCourse1', id: 1 },
         { title: 'ExampleCourse2', id: 2 },
         { title: 'ExampleCourse3', id: 3 }
+    ];
+})
+
+.controller('PlaylistCtrl', function($scope, $stateParams) {
+})
+
+.controller('AssignmentsCtrl', function($scope) {
+    $scope.assignments = [
+        { title: 'Assignment1', id: 1 },
+        { title: 'Assignment2', id: 2 },
+        { title: 'Assignment3', id: 3 },
+        { title: 'Assignment4', id: 4 },
+        { title: 'Assignment5', id: 5 },
+        { title: 'Assignment2', id: 2 },
+        { title: 'Assignment3', id: 3 },
+        { title: 'Assignment4', id: 4 },
+        { title: 'Assignment5', id: 5 },
+        { title: 'Assignment6', id: 6 }
     ];
 })
 
