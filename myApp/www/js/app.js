@@ -62,6 +62,14 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
             }
         }
     })
+    .state('app.addcourse', {
+        url: '/addCourse',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/page3.html'
+            }
+        }
+    })
     .state('app.page9', {
         url: '/page9',
         views: {
