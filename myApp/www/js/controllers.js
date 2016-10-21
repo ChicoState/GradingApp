@@ -61,4 +61,5 @@ angular.module('GradingApp.controllers', [])
 })
 
 .controller('CourseCtrl', function($scope, $stateParams) {
+    console.log($stateParams);
 });
