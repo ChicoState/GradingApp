@@ -7,7 +7,7 @@
 /**
  * Grading App Main Module
  */
-angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
+angular.module('GradingApp', ['ionic', 'GradingApp.controllers', 'ngCordova'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -241,7 +241,8 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
       url: '/page12',
       views: {
         'menuContent': {
-          templateUrl: 'templates/page12.html'
+          templateUrl: 'templates/page12.html',
+          controller: 'CameraController'
         }
       }
   }) 
@@ -273,3 +274,4 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
 
   $urlRouterProvider.otherwise('/app/homepage');
    }); 
+
