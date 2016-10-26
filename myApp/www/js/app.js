@@ -1,32 +1,6 @@
 /**
- * Cy's current picture of what the direcotry looks like
- * .
- * ├── css
- * │   └── style.css    <------ added a rule in here, but doesn't seem to affect
- * ├── img                      anything
- * │   ├── epichighered.png <------------------------ for page2(homepage)'s link
- * │   └── ionic.png
- * ├── index.html           <------ body tag points to GradingApp, defined below
- * ├── js
- * │   ├── app.js           <-------------------------------------- you are here
- * │   ├── controllers.js
- * │   └── original_starterapp_files   <--- contains the original files. I don't
- * │       ├── app.js                       need it anymore if you guys want to
- * │       └── controllers.js               get rid of the clutter.
- * └── templates
- *     ├── browse.html     <----------------------------- no idea what this does
- *     ├── course.html     <------------------- added by cy. was 'playlist.html'
- *     ├── homepage.html   <------------------ added by cy. was 'playlists.html'
- *     ├── login.html
- *     ├── menu.html
- *     ├── page12.html
- *     ├── page2.html
- *     ├── page3.html
- *     ├── page6.html
- *     ├── page8.html
- *     ├── page9.html
- *     ├── playlist.html    <--------------------don't need, feel free to delete
- *     └── playlists.html   <------------------------------------------ likewise     
+ *
+ * move pg3 from menu to homepage addacourse button
  */ 
 
 
