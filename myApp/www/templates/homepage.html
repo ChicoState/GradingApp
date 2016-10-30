@@ -2,19 +2,19 @@
     <ion-content align="center">
         <h1>My Classes</h1>
             <div class="list list-inset">
-            <div class="item item-button">
-            <ion-item ng-repeat="course in courses"
-                    href="#/app/homepage/{{ course.id }}">
-                    {{ course.title }}
-            </ion-item>
-            </div>
+                <div class="item item-button">
+                    <ion-item ng-repeat="course in courses"
+                        href="#/app/homepage/{{ course.id }}">
+                        {{ course.title }}
+                    </ion-item>
+                </div>
             </div>
             <br>
             <div>
-                <button class="button button-block  button-outline button-positive"
-                        onlick="window.location.href='#/app/addCourse.html'">
+                <ion-item
+                    ng-click="show_add_course()">
                     Add a course
-                </button>
+                </ion-item>
             </div>
                 <a href="http://www.epichighered.com">
                 <img border="5" border-color="black" alt="epichighered" src="/img/epichighered.png">

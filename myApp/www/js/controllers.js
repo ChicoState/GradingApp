@@ -15,48 +15,75 @@ angular.module('GradingApp.controllers', [])
      * Instantiate form and login modal, and put the form in the modal for
      * later use. */
     $scope.loginData = {};
+
     $ionicModal.fromTemplateUrl('templates/login.html', {
         scope: $scope
     }).then(function(modal) {
         $scope.modal = modal;
     });
-    $scope.closeLogin = function() { // close login page
+
+    /** close login page */
+    $scope.closeLogin = function() {
         $scope.modal.hide();
     };
-    $scope.login = function() { // open login page
+
+    /** open login page */
+    $scope.login = function() {
         $scope.modal.show();
     };
+
     $scope.doLogin = function() {
         console.log('Doing login', $scope.loginData);
-    $timeout(function() { // timeout to simulate login wait
+
+    /** simulate timeout because login is not implemented */
+    $timeout(function()
+    {
         $scope.closeLogin();
     }, 100);
+
   };
 })
 
-.controller('HomePageCtrl', function($scope) {
+.controller('HomePageCtrl', function($scope, $ionicModal) {
+    
+    $ionicModal.fromTemplateUrl('templates/add_course.html', {
+        scope: $scope
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+
     $scope.courses = [
         { title: 'ExampleCourse1', id: 1 },
         { title: 'ExampleCourse2', id: 2 },
-        { title: 'ExampleCourse3', id: 3 }
+        { title: 'ExampleCourse3', id: 3 },
     ];
-})
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+    /** updated course list */
+    $scope.add_course = function(title, id)
+    {
+        $scope.courses.push( { title, id } );
+    }
+
+    /** show add a course view */
+    $scope.show_add_course = function()
+    {
+        $scope.modal.show();
+    }
+
+    /** return */
+    $scope.close_add_course = function()
+    {
+        $scope.modal.hide();
+    }
+
+    console.log($scope);
+
 })
 
 .controller('AssignmentsCtrl', function($scope) {
     $scope.assignments = [
         { title: 'Assignment1', id: 1 },
         { title: 'Assignment2', id: 2 },
-        { title: 'Assignment3', id: 3 },
-        { title: 'Assignment4', id: 4 },
-        { title: 'Assignment5', id: 5 },
-        { title: 'Assignment2', id: 2 },
-        { title: 'Assignment3', id: 3 },
-        { title: 'Assignment4', id: 4 },
-        { title: 'Assignment5', id: 5 },
-        { title: 'Assignment6', id: 6 }
     ];
 })
 
