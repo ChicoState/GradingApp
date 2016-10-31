@@ -87,7 +87,8 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
         url: '/page9',
         views: {
             'menuContent': {
-                templateUrl: 'templates/page9.html'
+                templateUrl: 'templates/page9.html',
+		controller: 'AssignmentsCtrl'
             }
         }
     })
@@ -147,15 +148,15 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
     })
 
 //// templates/page1.html doesn't exist
-//
-//  .state('app.page1', {
-//      url: '/page1',
-//      views: {
-//        'menuContent': {
-//          templateUrl: 'templates/page1.html'
-//        }
-//       }
-//  })
+
+  .state('app.page1', {
+      url: '/page1',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/page1.html'
+        }
+       }
+  })
 
   .state('app.page2', {
       url: '/page2',
@@ -186,15 +187,15 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
 // }) 
 
 //// templates/page5.html doesn't exist
-//
-//  .state('app.page5', {
-//      url: '/page5',
-//      views: {
-//        'menuContent': {
-//          templateUrl: 'templates/page5.html'
-//        }
-//      }
-//  }) 
+
+  .state('app.page5', {
+      url: '/page5',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/page5.html'
+        }
+      }
+  }) 
 
 //// app.page6 defined twice
 //
@@ -242,15 +243,15 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
 //  }) 
 
 //// templates/page10.html doesn't exist
-//
-//  .state('app.page10', {
-//      url: '/page10',
-//      views: {
-//        'menuContent': {
-//          templateUrl: 'templates/page10.html'
-//        }
-//      }
-//  }) 
+
+  .state('app.page10', {
+      url: '/page10',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/page10.html'
+        }
+      }
+  }) 
 
 //// templates/page11.html doesn't exist
 //
@@ -283,17 +284,36 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
 //      }
 //  }) 
 
-//// templates/page14.html doesn't exist
-//
-//  .state('app.page14', {
-//      url: '/page14',
-//      views: {
-//        'menuContent': {
-//          templateUrl: 'templates/page14.html'
-//          /* end of new contentend */
-//        }
-//      }
-//  }) ;
+ //templates/page14.html doesn't exist
+
+  .state('app.page14', {
+      url: '/page14',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/page14.html'
+          /* end of new contentend */
+        }
+      }
+  }) 
+
+  .state('app.page16', {
+  	url: '/page16',
+	views: {
+		'menuContent': {
+			templateUrl: 'templates/page16.html'
+		}
+	}
+  })
+
+  .state('app.page17', {
+  	url: '/page17',
+	views: {
+		'menuContent': {
+			templateUrl: 'templates/page17.html',
+			controller: 'RosterCtrl'
+		}
+	}
+  }) ;
 
  /******* end of stuff from pull */
 

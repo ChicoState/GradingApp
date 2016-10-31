@@ -4,16 +4,16 @@
             <div>
                 <button class="button button-block button-positive"
                     ng-repeat="course in courses"
-                    onclick="window.location.href='#/app/homepage/{{ course.id }}'">
+                    onclick="window.location.href='#/app/homepage/{{ courses.id }}'">
                     {{ course.title }}
                 </button>
             </div>
             <br>
             <div>
-                <button class="button button-block  button-outline button-positive"
-                        onlick="window.location.href='#/app/addCourse.html'">
-                    Add a course
-                </button>
+                <a class="button button-block  button-outline button-positive"
+                        href="#/app/page3">
+                    Create a new Class
+                </a>
             </div>
                 <a href="http://www.epichighered.com">
                 <img border="5" border-color="black" alt="epichighered" src="/img/epichighered.png">

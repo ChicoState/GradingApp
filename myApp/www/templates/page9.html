@@ -3,30 +3,27 @@
   
 
   <h1>Example Class</h1>
-    <a class="button button-block" href="#/app/page2">
-  		Add Assignment
+    <a class="button button-block" href="#/app/page10">
+  		<span style="font-weight:bold">Add Assignment</span>
 	</a>
 	
     <a  class="button button-block" href="#/app/page14">
-  		Edit Assignment
+  		<span style="font-weight:bold">Edit Assignment</span>
 	</a>
 
-	<ion-scroll direction="y" style ="height: 250px">
-		<div class="list list-inset">
-
-		  <div class="item item-button">
-		    
-		    <ion-item ng-repeat="assignment in assignments" ">
-	        	{{assignment.title}}
-	      	</ion-item>
-		  </div>
-
+		<div>
+		<ion-list>
+		  <button class="button button-block button-stable"
+		    ng-repeat="assignment in assignments"
+	        	onclick="window.location.href='#app/page9/{{assignments.title}}'">
+	      			{{  assignment.title }}	
+		  </button>
+		</ion-list>
 		</div>
-	</ion-scroll>
 
-	<div class="bar">
-	  <button class="button button-block">Class Home</button>
-	</div>
+	<center><div class="bar">
+	  <a class="button button-block" href="#app/homepage">Class Home</a>
+	</div></center>
 
   </ion-content>
 </ion-view>

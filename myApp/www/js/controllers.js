@@ -36,9 +36,10 @@ angular.module('GradingApp.controllers', [])
 
 .controller('HomePageCtrl', function($scope) {
     $scope.courses = [
-        { title: 'ExampleCourse1', id: 1 },
-        { title: 'ExampleCourse2', id: 2 },
-        { title: 'ExampleCourse3', id: 3 }
+        { title: 'Example Course 1', id: 1 },
+        { title: 'Example Course 2', id: 2 },
+        { title: 'Example Course 3', id: 3 },
+	{ title: 'Example Course 4', id: 4 }
     ];
 })
 
@@ -52,12 +53,15 @@ angular.module('GradingApp.controllers', [])
         { title: 'Assignment3', id: 3 },
         { title: 'Assignment4', id: 4 },
         { title: 'Assignment5', id: 5 },
-        { title: 'Assignment2', id: 2 },
-        { title: 'Assignment3', id: 3 },
-        { title: 'Assignment4', id: 4 },
-        { title: 'Assignment5', id: 5 },
-        { title: 'Assignment6', id: 6 }
     ];
+})
+
+.controller('RosterCtrl', function($scope) {
+	$scope.students = [
+		{title: 'Student 1', id: 1},
+		{title: 'Student 2', id: 2},
+		{title: 'Student 3', id: 3}
+	];
 })
 
 .controller('CourseCtrl', function($scope, $stateParams) {
