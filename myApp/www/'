@@ -1,5 +1,12 @@
-/** controllers.js
- */
+    /*
+     * Controllers are only called when they are recreated or on app start,
+     * instead of every page change. To listen for when this page is active
+     * (for example, to refresh data), listen for the $ionicView.enter event:
+     *
+     *      $scope.$on('$ionicView.enter', function(e) {
+     *      });
+     * 
+     */
 
 angular.module('GradingApp.controllers', [])
 
@@ -39,43 +46,41 @@ angular.module('GradingApp.controllers', [])
 
 .controller('HomePageCtrl', function($scope, $ionicModal) {
     
-    $ionicModal.fromTemplateUrl('templates/add_course_page3.html', {
+    $ionicModal.fromTemplateUrl('templates/add_course.html', {
         scope: $scope
-    }).then(function(modal)
-    {
+    }).then(function(modal) {
         $scope.modal = modal;
     });
 
-    /** app data: need to tie in with json/database
-     */
     $scope.course_data = {};
-    $scope.courses = [];
 
-    /** show add a course view
-     */
+    $scope.courses = [
+          { title: 'ExampleCourse1', id: 1 }
+        , { title: 'ExampleCourse2', id: 2 }
+        , { title: 'ExampleCourse3', id: 3 }
+        ,
+    ];
+
+    /** show add a course view */
     $scope.show_add_course = function()
     {
         $scope.modal.show();
     };
 
-    /** return to homepage
-     */
+    /** return */
     $scope.close_add_course = function()
     {
         $scope.modal.hide();
     };
 
-    /** update course list
-     */
-    $scope.add_course = function(title)
+    /** updated course list */
+    $scope.add_course = function(/* title */)
     {
+        //var title = "new course!!!";
         var id = $scope.courses.length;
-        $scope.courses.push( { title, id } );
-        title = "";
+        $scope.courses.push( { "new course", id } );
     };
 
-    /** debug
-     */
     console.log($scope);
 
 })

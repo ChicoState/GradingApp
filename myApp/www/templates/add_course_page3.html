@@ -1,0 +1,49 @@
+<!--<ion-modal-view>-->
+
+<!-- add a course view -->
+<ion-view>
+
+    <!-- Title of add a course view -->
+    <ion-header-bar>
+        <h1 class="title">Add a course, bra</h1>
+        <div class = "buttons">
+            <button
+                class="button button-clear"
+                ng-click="close_add_course()">
+                Back
+            </button>
+        </div>
+    </ion-header-bar>
+
+    <!-- Contains form for adding a new course title to homepage -->
+    <ion-content>
+        <form ng-submit="add_course(course_data.title)">
+            <div class="list">
+                
+                <!-- New title -->
+                <label class="item item-input">
+                    <span class="input-label">
+                        Title:
+                    </span>
+                    <input
+                        type="text"
+                        ng-model="course_data.title"
+                    >
+                </label>
+
+                <!-- submit -->
+                <label class="item">
+                    <button
+                        class="button button-block button-positive"
+                        type="submit"
+                        ng-click="close_add_course()">
+                        Add class
+                    </button>
+                </label>
+
+            </div>
+        </form>
+    <ion-content>
+
+</ion-view>
+<!--<ion-modal-view>-->
