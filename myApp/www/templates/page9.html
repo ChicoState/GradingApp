@@ -12,13 +12,16 @@
 	</a>
 
 		<div>
-		<ion-list>
-		  <button class="button button-block button-stable"
-		    ng-repeat="assignment in assignments"
-	        	onclick="window.location.href='#app/page9/{{assignments.title}}'">
-	      			{{  assignment.title }}	
-		  </button>
-		</ion-list>
+	<ion-scroll direction="y" style ="height: 250px">
+		<div class="list list-inset">
+
+		  <div class="item item-button">
+		    
+		    <ion-item ng-repeat="assignment in assignments">
+	        	{{assignment.title}}
+	      	</ion-item>
+		  </div>
+
 		</div>
 
 	<center><div class="bar">

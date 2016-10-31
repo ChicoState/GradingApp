@@ -1,5 +1,12 @@
-/** controllers.js
- */
+    /*
+     * Controllers are only called when they are recreated or on app start,
+     * instead of every page change. To listen for when this page is active
+     * (for example, to refresh data), listen for the $ionicView.enter event:
+     *
+     *      $scope.$on('$ionicView.enter', function(e) {
+     *      });
+     * 
+     */
 
 angular.module('GradingApp.controllers', [])
 
@@ -27,63 +34,53 @@ angular.module('GradingApp.controllers', [])
 
     $scope.doLogin = function() {
         console.log('Doing login', $scope.loginData);
+
+        /** simulate timeout because login is not implemented */
         $timeout(function()
-	{
-	  $scope.closeLogin();
-	}, 100);
+        {
+            $scope.closeLogin();
+        }, 100);
 
     };
 })
 
-.controller('HomePageCtrl', function($scope) {
-    $scope.courses = [
-        { title: 'Example Course 1', id: 1 },
-        { title: 'Example Course 2', id: 2 },
-        { title: 'Example Course 3', id: 3 },
-	{ title: 'Example Course 4', id: 4 }
-    ];
-        /** simulate timeout because login is not implemented */
-})
-
 .controller('HomePageCtrl', function($scope, $ionicModal) {
     
-    $ionicModal.fromTemplateUrl('templates/add_course_page3.html', {
+    $ionicModal.fromTemplateUrl('templates/add_course.html', {
         scope: $scope
-    }).then(function(modal)
-    {
+    }).then(function(modal) {
         $scope.modal = modal;
     });
 
-    /** app data: need to tie in with json/database
-     */
     $scope.course_data = {};
-    $scope.courses = [];
 
-    /** show add a course view
-     */
+    $scope.courses = [
+          { title: 'ExampleCourse1', id: 1 }
+        , { title: 'ExampleCourse2', id: 2 }
+        , { title: 'ExampleCourse3', id: 3 }
+        ,
+    ];
+
+    /** show add a course view */
     $scope.show_add_course = function()
     {
         $scope.modal.show();
     };
 
-    /** return to homepage
-     */
+    /** return */
     $scope.close_add_course = function()
     {
         $scope.modal.hide();
     };
 
-    /** update course list
-     */
-    $scope.add_course = function(title)
+    /** updated course list */
+    $scope.add_course = function(/* title */)
     {
+        //var title = "new course!!!";
         var id = $scope.courses.length;
-        $scope.courses.push( { title, id } );
-        title = "";
+        $scope.courses.push( { "new course", id } );
     };
 
-    /** debug
-     */
     console.log($scope);
 
 })
@@ -92,18 +89,7 @@ angular.module('GradingApp.controllers', [])
     $scope.assignments = [
         { title: 'Assignment1', id: 1 },
         { title: 'Assignment2', id: 2 },
-        { title: 'Assignment3', id: 3 },
-        { title: 'Assignment4', id: 4 },
-        { title: 'Assignment5', id: 5 },
     ];
-})
-
-.controller('RosterCtrl', function($scope) {
-	$scope.students = [
-		{title: 'Student 1', id: 1},
-		{title: 'Student 2', id: 2},
-		{title: 'Student 3', id: 3}
-	];
 })
 
 .controller('CourseCtrl', function($scope, $stateParams) {

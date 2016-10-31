@@ -1,37 +1,4 @@
-/**
- * Cy's current picture of what the direcotry looks like
- * .
- * ├── css
- * │   └── style.css    <------ added a rule in here, but doesn't seem to affect
- * ├── img                      anything
- * │   ├── epichighered.png <------------------------ for page2(homepage)'s link
- * │   └── ionic.png
- * ├── index.html           <------ body tag points to GradingApp, defined below
- * ├── js
- * │   ├── app.js           <-------------------------------------- you are here
- * │   ├── controllers.js
- * │   └── original_starterapp_files   <--- contains the original files. I don't
- * │       ├── app.js                       need it anymore if you guys want to
- * │       └── controllers.js               get rid of the clutter.
- * └── templates
- *     ├── browse.html     <----------------------------- no idea what this does
- *     ├── course.html     <------------------- added by cy. was 'playlist.html'
- *     ├── homepage.html   <------------------ added by cy. was 'playlists.html'
- *     ├── login.html
- *     ├── menu.html
- *     ├── page12.html
- *     ├── page2.html
- *     ├── page3.html
- *     ├── page6.html
- *     ├── page8.html
- *     ├── page9.html
- *     ├── playlist.html    <--------------------don't need, feel free to delete
- *     └── playlists.html   <------------------------------------------ likewise     
- */ 
-
-
-/**
- * Grading App Main Module
+/**  Grading App Main Module
  */
 angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
 
@@ -92,31 +59,13 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
             }
         }
     })
-/*\
- *
- *
- * * * * * previous cy's working stuff */
 
-/* stuff from pull / * * * * * * * * * *
-                                       *
-                                       *
-                                       *
-                                      \*/
     .state('app.page8', {
         url: '/page8',
         views: {
             'menuContent': {
                 templateUrl: 'templates/page8.html'
              }
-        }
-    })
-
-    .state('app.wuttup', {
-        url: '/wuttup',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/page3.html'
-            }
         }
     })
 
@@ -128,24 +77,6 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
           }
       }
   })
-
-/////////
-///OOOO//
-//OO//OO/
-/////OO//
-////OO///
-/////////
-////OO///
-///////// are we keeping playlist ?
-    .state('app.single', {
-        url: '/playlists/:playlistId',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/playlist.html',
-                controller: 'PlaylistCtrl'
-            }
-        }
-    })
 
 //// templates/page1.html doesn't exist
 
@@ -166,14 +97,15 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
         }
       }
   }) 
-  .state('app.page3', {
-      url: '/page3',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/page3.html'
-        }
-      }
-  }) 
+////
+//  .state('app.page3', {
+//      url: '/page3',
+//      views: {
+//        'menuContent': {
+//          templateUrl: 'templates/page3.html'
+//        }
+//      }
+//  }) 
 
 //// templates/page4.html doesn't exist
 //
