@@ -35,18 +35,10 @@ angular.module('GradingApp.controllers', [])
     };
 })
 
-.controller('HomePageCtrl', function($scope) {
-    $scope.courses = [
-        { title: 'Example Course 1', id: 1 },
-        { title: 'Example Course 2', id: 2 },
-        { title: 'Example Course 3', id: 3 },
-	{ title: 'Example Course 4', id: 4 }
-    ];
-        /** simulate timeout because login is not implemented */
-})
-
-.controller('HomePageCtrl', function($scope, $ionicModal) {
+.controller('HomePageCtrl', ['$cordovaFile'function($scope, $ionicModal) {
     
+    /** add a course functionality
+     */
     $ionicModal.fromTemplateUrl('templates/add_course_page3.html', {
         scope: $scope
     }).then(function(modal)
