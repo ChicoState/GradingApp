@@ -35,9 +35,10 @@ angular.module('GradingApp.controllers', [])
     };
 })
 
-
 .controller('HomePageCtrl', function($scope, $ionicModal) {
     
+    /** add a course functionality
+     */
     $ionicModal.fromTemplateUrl('templates/add_course_page3.html', {
         scope: $scope
     }).then(function(modal)

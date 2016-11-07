@@ -17,11 +17,11 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
     $stateProvider
 
     .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
+        url: '/app',
+        abstract: true,
+        templateUrl: 'templates/menu.html',
+        controller: 'AppCtrl'
+    })
 
     .state('app.browse', {
         url: '/browse',
@@ -31,6 +31,7 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
             }
         }
     })
+
     .state('app.homepage', {
         url: '/homepage',
         views: {
@@ -40,6 +41,7 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
             }
         }
     })
+
     .state('app.course', {
         url: '/homepage/:courseId',
         views: {
@@ -55,7 +57,7 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
         views: {
             'menuContent': {
                 templateUrl: 'templates/page9.html',
-		controller: 'AssignmentsCtrl'
+                controller: 'AssignmentsCtrl'
             }
         }
     })
@@ -69,34 +71,35 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
         }
     })
 
-  .state('app.page6', {
-      url: '/page6',
-      views: {
-          'menuContent': {
-              templateUrl: 'templates/page6.html'
-          }
-      }
-  })
+    .state('app.page6', {
+        url: '/page6',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/page6.html'
+            }
+        }
+    })
 
 //// templates/page1.html doesn't exist
 
-  .state('app.page1', {
-      url: '/page1',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/page1.html'
+    .state('app.page1', {
+        url: '/page1',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/page1.html'
+            }
         }
-       }
-  })
+    })
 
   .state('app.page2', {
       url: '/page2',
       views: {
-        'menuContent': {
-          templateUrl: 'templates/page2.html'
+            'menuContent': {
+                templateUrl: 'templates/page2.html'
+            }
         }
-      }
-  }) 
+    })
+
 ////
 //  .state('app.page3', {
 //      url: '/page3',
@@ -105,7 +108,7 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
 //          templateUrl: 'templates/page3.html'
 //        }
 //      }
-//  }) 
+//  })
 
 //// templates/page4.html doesn't exist
 //
@@ -116,7 +119,7 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
 //        templateUrl: 'templates/page4.html'
 //      }
 //    }
-// }) 
+// })
 
 //// templates/page5.html doesn't exist
 
@@ -127,7 +130,7 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
           templateUrl: 'templates/page5.html'
         }
       }
-  }) 
+  })
 
 //// app.page6 defined twice
 //
@@ -138,7 +141,7 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
 //          templateUrl: 'templates/page6.html'
 //        }
 //      }
-//  }) 
+//  })
 
 //// templates/page7.html doesn't exist
 //
@@ -149,7 +152,7 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
 //          templateUrl: 'templates/page7.html'
 //        }
 //      }
-//  }) 
+//  })
 
 //// app.page8 defined twice
 //
@@ -160,7 +163,7 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
 //          templateUrl: 'templates/page8.html'
 //        }
 //      }
-//  }) 
+//  })
 
 //// app.page9 defined twice
 //
@@ -172,7 +175,7 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
 //          controller: 'AssignmentsCtrl'
 //        }
 //      }
-//  }) 
+//  })
 
 //// templates/page10.html doesn't exist
 
@@ -183,7 +186,7 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
           templateUrl: 'templates/page10.html'
         }
       }
-  }) 
+  })
 
 //// templates/page11.html doesn't exist
 //
@@ -194,7 +197,7 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
 //          templateUrl: 'templates/page11.html'
 //        }
 //      }
-//  }) 
+//  })
 
   .state('app.page12', {
       url: '/page12',
@@ -203,7 +206,7 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
           templateUrl: 'templates/page12.html'
         }
       }
-  }) 
+  })
 
 //// templates/page13.html doesn't exist
 //
@@ -214,7 +217,7 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
 //          templateUrl: 'templates/page13.html'
 //        }
 //      }
-//  }) 
+//  })
 
  //templates/page14.html doesn't exist
 
@@ -222,32 +225,31 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
       url: '/page14',
       views: {
         'menuContent': {
-          templateUrl: 'templates/page14.html'
-          /* end of new contentend */
+            templateUrl: 'templates/page14.html'
         }
       }
-  }) 
-
-  .state('app.page16', {
-  	url: '/page16',
-	views: {
-		'menuContent': {
-			templateUrl: 'templates/page16.html'
-		}
-	}
   })
 
-  .state('app.page17', {
-  	url: '/page17',
-	views: {
-		'menuContent': {
-			templateUrl: 'templates/page17.html',
-			controller: 'RosterCtrl'
-		}
-	}
-  }) ;
+    .state('app.page16', {
+        url: '/page16',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/page16.html'
+            }
+        }
+    })
+
+    .state('app.page17', {
+        url: '/page17',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/page17.html',
+                controller: 'RosterCtrl'
+            }
+        }
+    }) ;
 
  /******* end of stuff from pull */
 
   $urlRouterProvider.otherwise('/app/homepage');
-   }); 
+});
