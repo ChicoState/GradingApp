@@ -62,8 +62,23 @@ angular.module('GradingApp.controllers', [])
 
 .controller('CourseCtrl', function($scope, $stateParams) {
 })
-.controller("CameraController", function ($scope, $cordovaCamera) {
- 
+.controller("CameraController", function ($scope, $ionicModal, $cordovaFile, $cordovaFileTransfer, $cordovaCamera) {
+ 	
+	var me = this;
+	me.current_image = '';
+	me.image_description = '';
+	me.detection_type = 'LABEL_DETECTION';
+
+	me.detection_types = {
+		//LABEL_DETECTION: 'label',
+		TEXT_DETECTION: 'text',
+		//LOGO_DETECTION: 'logo',
+		//LANDMARK_DETECTION: 'landmark'
+	};
+	
+	//need our google api key
+	//var api_key = 'your-google-api-key';
+
                 $scope.takePhoto = function () {
                   var options = {
                     quality: 75,
@@ -78,10 +93,53 @@ angular.module('GradingApp.controllers', [])
                 };
    
                     $cordovaCamera.getPicture(options).then(function (imageData) {
-                        $scope.imgURI = "data:image/jpeg;base64," + imageData;
+                        me.current_image = "data:image/jpeg;base64," + imageData;
+
+			var vision_api_json = {
+			  "requests":[
+			   {
+			    "image":{
+			      "content": imageData
+			    },
+			    "features":[
+			      {
+				"type": me.detection_type,
+				"maxResults": 1
+			      }
+			    ]
+			   }
+			  ]
+			};
+
+			var file_contents = JSON.stringify(vision_api_json);
+
+			$cordovaFile.writeFile(
+			    cordova.file.applicationStorageDirectory,
+			    'file.json',
+			    file_contents,
+			    true
+			).then(function(result){
+			    var header = {
+				'Content-Type': 'application/json'
+			    };
+
+			    options.headers = headers;
+
+	/*		    var server = 'https://vision.googleapis.com/v1/images:annotate?key=' = api_key;
+			    var filePath = cordova.file.applicationStorageDirectory + 'file,json';
+			    $cordovaFileTranser.upload(server, filePath, options, true)
+			        .then(function(result){
+					var res = JSON.parse(result.response);
+					var key = me.detection_types[me.detection_type] + 'Annotations';
+					me.image_description = res.responses[0][key][0].description;
+				     }
+				)*/
+			     }
+			 )
                     }, function (err) {
                         // An error occured. Show a message to the user
                     });
+
                 }
                 
                 $scope.choosePhoto = function () {
