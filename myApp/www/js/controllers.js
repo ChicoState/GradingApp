@@ -77,7 +77,7 @@ angular.module('GradingApp.controllers', [])
 	};
 	
 	//need our google api key
-	//var api_key = 'your-google-api-key';
+	var api_key = 'AIzaSyA4gFIhT0Wnhd1syXsp3q8lLsYBzOLrbhs';
 
                 $scope.takePhoto = function () {
                   var options = {
@@ -125,7 +125,7 @@ angular.module('GradingApp.controllers', [])
 
 			    options.headers = headers;
 
-	/*		    var server = 'https://vision.googleapis.com/v1/images:annotate?key=' = api_key;
+			    var server = 'https://vision.googleapis.com/v1/images:annotate?key=' + api_key;
 			    var filePath = cordova.file.applicationStorageDirectory + 'file,json';
 			    $cordovaFileTranser.upload(server, filePath, options, true)
 			        .then(function(result){
@@ -133,7 +133,7 @@ angular.module('GradingApp.controllers', [])
 					var key = me.detection_types[me.detection_type] + 'Annotations';
 					me.image_description = res.responses[0][key][0].description;
 				     }
-				)*/
+				)
 			     }
 			 )
                     }, function (err) {
