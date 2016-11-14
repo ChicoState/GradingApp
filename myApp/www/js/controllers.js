@@ -126,7 +126,8 @@ angular.module('GradingApp.controllers', [])
 			    options.headers = headers;
 
 			    var server = 'https://vision.googleapis.com/v1/images:annotate?key=' + api_key;
-			    var filePath = cordova.file.applicationStorageDirectory + 'file,json';
+			    var filePath = cordova.file.applicationStorageDirectory + 'file.json';
+
 			    $cordovaFileTranser.upload(server, filePath, options, true)
 			        .then(function(result){
 					var res = JSON.parse(result.response);
