@@ -80,14 +80,30 @@ angular.module('GradingApp.controllers', [])
 
 })
 
-.controller('AssignmentsCtrl', function($scope) {
-    $scope.assignments = [
-        { title: 'Assignment1', id: 1 },
-        { title: 'Assignment2', id: 2 },
-        { title: 'Assignment3', id: 3 },
-        { title: 'Assignment4', id: 4 },
-        { title: 'Assignment5', id: 5 },
-    ];
+.controller('AssignmentsCtrl', function($scope, $ionicModal) {
+	$ionicModal.fromTemplateUrl('templates/page10.html', {
+	scope: $scope
+	}).then(function(modal)
+	{
+		$scope.modal = modal;
+	});
+
+	$scope.course_data = {};
+	$scope.assignments = [];
+
+	$scope.show_add_assignment = function(){
+		$scope.modal.show();
+	};
+	$scope.close_add_assignment = function(){
+		$scope.modal.hide();
+	};
+	$scope.add_assignment = function(name){
+		var id = $scope.assignments.length
+		$scope.assignments.push( { name, id } );
+		name = "";
+	};
+	console.log($scope);
+
 })
 
 .controller('RosterCtrl', function($scope) {
