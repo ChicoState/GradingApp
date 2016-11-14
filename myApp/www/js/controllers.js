@@ -35,7 +35,7 @@ angular.module('GradingApp.controllers', [])
     };
 })
 
-.controller('HomePageCtrl', ['$cordovaFile'function($scope, $ionicModal) {
+.controller('HomePageCtrl', function($scope, $ionicModal) {
     
     /** add a course functionality
      */
