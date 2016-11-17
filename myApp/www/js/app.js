@@ -1,6 +1,6 @@
 /**  Grading App Main Module
  */
-angular.module('GradingApp', ['ionic', 'GradingApp.controllers', 'ngCordova'])
+angular.module('GradingApp', ['ionic', 'GradingApp.controllers', 'ngCordova', 'backand'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -13,12 +13,12 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers', 'ngCordova'])
     });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, BackandProvider) {
     $stateProvider
 
-  //  BackandProvider.setAppName('GradingApp');
-  //  BackandProvider.setAnonymousToken('our-anonymous-token');
-
+    BackandProvider.setAppName('pocketta');
+    BackandProvider.setSignUpToken('f1ef0117-99c6-45e8-b2c8-c1a1daa0b726');
+    BackandProvider.setAnonymousToken('a2990cc8-140c-4131-82a0-b7bafa5edce6');
 
 
     .state('app', {

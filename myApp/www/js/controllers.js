@@ -52,12 +52,29 @@ angular.module('GradingApp.controllers', [])
     $scope.course_data = {};
     $scope.courses = [];
 
-    /*function getAllCourses(){
-	classList.getTodos()
+    function dataService($http, Backand){
+	var vm = this;
+
+	vm.getList = function(name, sort, filter){
+	  return $http({
+	    method: 'GET',
+	    url: Backand.getApiUrl() + '/1/objects/' + name,
+	    params: {
+		pageSize: 20,
+		pageNumber: 1,
+		filter: filter || '',
+		sort: sort || ''
+	    }
+	  });
+	}
+    }
+
+    function getAllCourses(){
+	classList.get()
 	.then(function(result){
 	  $scope.courses = result.data.data;
 	});
-    }*/
+    }
 
     /** show add a course view
      */
@@ -87,7 +104,7 @@ angular.module('GradingApp.controllers', [])
         title = "";
     };
 
-    //getAllCourses();
+    getAllCourses();
 
     /** debug
      */
