@@ -36,7 +36,8 @@ angular.module('GradingApp.controllers', [])
 })
 
 .controller('HomePageCtrl', function($scope, $ionicModal) {
-    
+
+
     /** add a course functionality
      */
     $ionicModal.fromTemplateUrl('templates/add_course_page3.html', {
@@ -50,6 +51,13 @@ angular.module('GradingApp.controllers', [])
      */
     $scope.course_data = {};
     $scope.courses = [];
+
+    /*function getAllCourses(){
+	classList.getTodos()
+	.then(function(result){
+	  $scope.courses = result.data.data;
+	});
+    }*/
 
     /** show add a course view
      */
@@ -69,10 +77,17 @@ angular.module('GradingApp.controllers', [])
      */
     $scope.add_course = function(title)
     {
+      /*classList.addClass($scope.input)
+        .then(function(result){
+	  $scope.course_data = {};
+	  getAllCourses();
+	});*/
         var id = $scope.courses.length;
         $scope.courses.push( { title, id } );
         title = "";
     };
+
+    //getAllCourses();
 
     /** debug
      */

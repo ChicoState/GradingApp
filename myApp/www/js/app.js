@@ -16,6 +16,11 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
 
+  //  BackandProvider.setAppName('GradingApp');
+  //  BackandProvider.setAnonymousToken('our-anonymous-token');
+
+
+
     .state('app', {
         url: '/app',
         abstract: true,
