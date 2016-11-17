@@ -1,0 +1,22 @@
+<ion-view view-title="Roster">
+  <ion-content>
+	<center>
+	  <h1>Example Class</h1>
+	  <div><p>
+	    Select Student For More Options
+	  </p></div>
+	</center>
+	<div>
+	<ion-list>
+	  <button class="button button-block button-stable"
+	   ng-repeat="student in students"
+	   onclick="window.location.href='#app/page17/{{students.title}}'">
+	   	{{ student.title }}
+	  </button>
+	</ion-list>
+	</div>
+	<div class="bar">
+	  <a class="button button-block" href="#app/homepage">Class Home</a>
+	</div>
+  </ion-content>
+</ion-view>
