@@ -122,7 +122,7 @@ angular.module('GradingApp.controllers', [])
     var objectName = 'classes/';
 
     function getUrl(){
-	return Backand.getapiUrl + baseUrl + objectName;
+	return Backand.getApiUrl() + baseUrl + objectName;
     }
 
     function getUrlForId(id){
