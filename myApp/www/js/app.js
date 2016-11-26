@@ -14,12 +14,13 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers', 'ngCordova', 'b
 })
 
 .config(function($stateProvider, $urlRouterProvider, BackandProvider) {
-    $stateProvider
+    //$stateProvider
 
     BackandProvider.setAppName('pocketta');
     BackandProvider.setSignUpToken('f1ef0117-99c6-45e8-b2c8-c1a1daa0b726');
     BackandProvider.setAnonymousToken('a2990cc8-140c-4131-82a0-b7bafa5edce6');
 
+    $stateProvider
 
     .state('app', {
         url: '/app',
@@ -42,7 +43,8 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers', 'ngCordova', 'b
         views: {
             'menuContent': {
                 templateUrl: 'templates/homepage.html',
-                controller: 'HomePageCtrl'
+                controller: 'HomePageCtrl',
+		service: 'classService'
             }
         }
     })

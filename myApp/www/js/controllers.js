@@ -35,7 +35,7 @@ angular.module('GradingApp.controllers', [])
     };
 })
 
-.controller('HomePageCtrl', function($scope, $ionicModal) {
+.controller('HomePageCtrl', function($scope, $ionicModal, classService) {
 
 
     /** add a course functionality
@@ -49,10 +49,10 @@ angular.module('GradingApp.controllers', [])
 
     /** app data: need to tie in with json/database
      */
-    $scope.course_data = {};
+    $scope.input = {};
     $scope.courses = [];
 
-    function dataService($http, Backand){
+    /*function dataService($http, Backand){
 	var vm = this;
 
 	vm.getList = function(name, sort, filter){
@@ -67,10 +67,10 @@ angular.module('GradingApp.controllers', [])
 	    }
 	  });
 	}
-    }
+    }*/
 
     function getAllCourses(){
-	classList.get()
+	classService.getClasses()
 	.then(function(result){
 	  $scope.courses = result.data.data;
 	});
@@ -88,27 +88,64 @@ angular.module('GradingApp.controllers', [])
     $scope.close_add_course = function()
     {
         $scope.modal.hide();
+
     };
 
     /** update course list
      */
-    $scope.add_course = function(title)
+    $scope.add_course = function()
     {
-      /*classList.addClass($scope.input)
+      classService.addClass($scope.input)
         .then(function(result){
-	  $scope.course_data = {};
+	  $scope.input = {};
 	  getAllCourses();
-	});*/
-        var id = $scope.courses.length;
-        $scope.courses.push( { title, id } );
-        title = "";
+	});
     };
+
+    $scope.delete_course = function(id)
+    {
+	classServicedeleteClass(id).then(function(result){
+	  getAllCourses();
+	});
+    }
 
     getAllCourses();
 
     /** debug
      */
     console.log($scope);
+
+})
+
+.service('classService', function($http, Backand){
+    var baseUrl = '/1/objects';
+    var objectName = 'classes';
+
+    function getUrl(){
+	return Backand.getapiUrl + baseUrl + objectName;
+    }
+
+    function getUrlForId(id){
+	return getUrl() + id;
+    }
+
+    getClasses = function(){
+	return $http.get(getUrl());
+    }
+
+    addClass = function(title){
+	return $http.post(getUrl(), title);
+    }
+
+    deleteClass = function(id){
+	return $http.delete(getUrlForId(id));
+    }
+
+    return {
+	getClasses: getClasses,
+	addClass: addClass,
+	deleteClass: deleteClass
+    }
 
 })
 

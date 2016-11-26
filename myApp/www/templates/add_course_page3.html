@@ -17,7 +17,7 @@
 
     <!-- Contains form for adding a new course title to homepage -->
     <ion-content>
-        <form ng-submit="add_course(course_data.title)">
+        <form ng-submit="add_course()">
             <div class="list">
                 
                 <!-- New title -->
@@ -27,7 +27,7 @@
                     </span>
                     <input
                         type="text"
-                        ng-model="course_data.title"
+                        ng-model="course_data.classes"
                     >
                 </label>
 
