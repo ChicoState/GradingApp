@@ -118,8 +118,8 @@ angular.module('GradingApp.controllers', [])
 })
 
 .service('classService', function($http, Backand){
-    var baseUrl = '/1/objects';
-    var objectName = 'classes';
+    var baseUrl = '/1/objects/';
+    var objectName = 'classes/';
 
     function getUrl(){
 	return Backand.getapiUrl + baseUrl + objectName;
