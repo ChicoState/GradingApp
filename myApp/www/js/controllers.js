@@ -104,7 +104,7 @@ angular.module('GradingApp.controllers', [])
 
     $scope.delete_course = function(id)
     {
-	classServicedeleteClass(id).then(function(result){
+	classService.deleteClass(id).then(function(result){
 	  getAllCourses();
 	});
     }
@@ -113,7 +113,6 @@ angular.module('GradingApp.controllers', [])
 
     /** debug
      */
-    console.log($scope);
 
 })
 
@@ -149,7 +148,7 @@ angular.module('GradingApp.controllers', [])
 
 })
 
-.controller('AssignmentsCtrl', function($scope, $ionicModal) {
+.controller('AssignmentsCtrl', function($scope, $ionicModal, assignmentService) {
 	$ionicModal.fromTemplateUrl('templates/page10.html', {
 	scope: $scope
 	}).then(function(modal)
@@ -157,30 +156,171 @@ angular.module('GradingApp.controllers', [])
 		$scope.modal = modal;
 	});
 
-	$scope.course_data = {};
+	$scope.input = {};
 	$scope.assignments = [];
 
-	$scope.show_add_assignment = function(){
-		$scope.modal.show();
-	};
-	$scope.close_add_assignment = function(){
-		$scope.modal.hide();
-	};
-	$scope.add_assignment = function(name){
-		var id = $scope.assignments.length
-		$scope.assignments.push( { name, id } );
-		name = "";
-	};
-	console.log($scope);
+    function getAllAssignments(){
+	classService.getAssignments()
+	.then(function(result){
+	  $scope.assignments = result.data.data;
+	});
+    }
+
+    /** show add a course view
+     */
+    $scope.show_add_assignment = function()
+    {
+        $scope.modal.show();
+    };
+
+    /** return to homepage
+     */
+    $scope.close_add_assignment = function()
+    {
+        $scope.modal.hide();
+
+    };
+
+    /** update course list
+     */
+    $scope.add_assignment = function()
+    {
+      assignmentService.addAssignment($scope.input)
+        .then(function(result){
+	  $scope.input = {};
+	  getAllAssignments();
+	});
+    };
+
+    $scope.delete_Assignment = function(id)
+    {
+	assignmentService.deleteAssignment(id).then(function(result){
+	  getAllAssignments();
+	});
+    }
+
+    getAllAssignments();
 
 })
 
-.controller('RosterCtrl', function($scope) {
-	$scope.students = [
-		{title: 'Student 1', id: 1},
-		{title: 'Student 2', id: 2},
-		{title: 'Student 3', id: 3}
-	];
+.service('assignmentService', function($http, Backand){
+    var baseUrl = '/1/objects/';
+    var objectName = 'assignments/';
+
+    function getUrl(){
+	return Backand.getApiUrl() + baseUrl + objectName;
+    }
+
+    function getUrlForId(id){
+	return getUrl() + id;
+    }
+
+    getAssignments = function(){
+	return $http.get(getUrl());
+    }
+
+    addAssignment = function(title){
+	return $http.post(getUrl(), title);
+    }
+
+    deleteAssignment = function(id){
+	return $http.delete(getUrlForId(id));
+    }
+
+    return {
+	getAssignments: getAssignments,
+	addAssignment: addAssignment,
+	deleteAssignment: deleteAssignment
+    }
+
+})
+
+.controller('studentsCtrl', function($scope, $ionicModal, studentsService) {
+
+	$ionicModal.fromTemplateUrl('templates/page8.html', {
+	scope: $scope
+	}).then(function(modal)
+	{
+		$scope.modal = modal;
+	});
+
+	$scope.input = {};
+	$scope.students = [];
+
+    function getAllStudents(){
+	studentsService.getStudents()
+	.then(function(result){
+	  $scope.students = result.data.data;
+	});
+    }
+
+    /** show add a course view
+     */
+    $scope.show_add_student = function()
+    {
+        $scope.modal.show();
+    };
+
+    /** return to homepage
+     */
+    $scope.close_add_student = function()
+    {
+        $scope.modal.hide();
+
+    };
+
+    /** update course list
+     */
+    $scope.add_student = function()
+    {
+      studentsService.addStudent($scope.input)
+        .then(function(result){
+	  $scope.input = {};
+	  getAllStudents();
+	});
+    };
+
+    $scope.delete_student = function(id)
+    {
+	  studentsService.deleteStudent(id).then(function(result){
+	  getAllStudents();
+	});
+    }
+
+    getAllStudents();
+
+})
+
+.service('studentsService', function($http, Backand){
+    var baseUrl = '/1/objects/';
+    var objectName = 'students/';
+
+    function getUrl(){
+	return Backand.getApiUrl() + baseUrl + objectName;
+    }
+
+    function getUrlForId(id){
+	return getUrl() + id;
+    }
+
+    getStudents = function(){
+	return $http.get(getUrl());
+    }
+
+    addStudent = function(title){
+	return $http.post(getUrl(), title);
+    }
+
+    deleteStudent = function(id){
+	return $http.delete(getUrlForId(id));
+    }
+
+    return {
+	getStudents: getStudents,
+	addStudent: addStudent,
+	deleteStudent: deleteStudent
+    }
+
 })
 
 .controller('CourseCtrl', function($scope, $stateParams) {

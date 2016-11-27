@@ -1,3 +1,4 @@
+<script src="../js/controllers.js"></script>
 <ion-view view-title="Home">
     <ion-content align="center">
         <center>
@@ -6,32 +7,32 @@
             <div>
                 <div class="list list-inset" ng-show="courses.length != 0">
                     <div class="item item-button" style=background-color:rgb(50,50,255);height:300px;overflow-y:scroll; ng-show="courses.length > 3">
-                        <ion-item ng-repeat="course in courses">
+                        <div ng-repeat="course in courses">
                             <div ng-show="$index != (courses.length -1)" style="padding-bottom:20px">
                                 <button class="button button-block button-positive" style="background-color:rgb({{56 - ($index * 10)}},{{126 - ($index * 10)}},{{245 - ($index * 10)}})" onclick="window.location.href='#/app/homepage/{{ courses.id }}'">
-                                    {{ item.id }}
+                                    {{ course.className }}
                                 </button>
                             </div>
                             <div ng-show="$index == (courses.length - 1)">
                                 <button class="button button-block button-positive" style="background-color:rgb({{56 - ($index * 10)}},{{126 - ($index * 10)}},{{245 - ($index * 10)}})" onclick="window.location.href='#/app/homepage/{{ courses.id }}'">
-                                    {{ item.id }}
+                                    {{ course.className }}
                                 </button>
                             </div>
-                        </ion-item>
+                        </div>
                     </div>
                     <div class="item item-button" style="background-color:rgb(50,50,255)" ng-show="courses.length <= 3">
-                        <ion-item ng-repeat="course in courses">
+                        <div ng-repeat="course in courses">
                             <div ng-show="$index != (courses.length -1)" style="padding-bottom:20px">
                                 <button class="button button-block button-positive" style="background-color:rgb({{56 - ($index * 10)}},{{126 - ($index * 10)}},{{245 - ($index * 10)}})" onclick="window.location.href='#/app/homepage/{{ courses.id }}'">
-                                    {{ item.id }}
+                                    {{ course.className }}
                                 </button>
                             </div>
                             <div ng-show="$index == (courses.length - 1)">
                                 <button class="button button-block button-positive" style="background-color:rgb({{56 - ($index * 10)}},{{126 - ($index * 10)}},{{245 - ($index * 10)}})" onclick="window.location.href='#/app/homepage/{{ courses.id }}'">
-                                    {{ item.id }}
+                                    {{ course.className }}
                                 </button>
                             </div>
-                        </ion-item>
+                        </div>
                     </div>
                 </div>
                 <br>

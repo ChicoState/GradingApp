@@ -64,7 +64,8 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers', 'ngCordova', 'b
         views: {
             'menuContent': {
                 templateUrl: 'templates/page9.html',
-                controller: 'AssignmentsCtrl'
+                controller: 'AssignmentsCtrl',
+		service: 'assignmentsService'
             }
         }
     })
@@ -134,7 +135,8 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers', 'ngCordova', 'b
       url: '/page5',
       views: {
         'menuContent': {
-          templateUrl: 'templates/page5.html'
+          templateUrl: 'templates/page5.html',
+	  controller: 'studentsCtrl'
         }
       }
   })
@@ -252,7 +254,8 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers', 'ngCordova', 'b
         views: {
             'menuContent': {
                 templateUrl: 'templates/page17.html',
-                controller: 'RosterCtrl'
+                controller: 'studentsCtrl',
+		service: 'studentsService'
             }
         }
     }) ;
