@@ -49,7 +49,7 @@ angular.module('GradingApp.controllers', [])
 
     /** app data: need to tie in with json/database
      */
-    $scope.input = {};
+    $scope.classes = {};
     $scope.courses = [];
 
     /*function dataService($http, Backand){
@@ -95,9 +95,9 @@ angular.module('GradingApp.controllers', [])
      */
     $scope.add_course = function()
     {
-      classService.addClass($scope.input)
+      classService.addClass($scope.classes)
         .then(function(result){
-	  $scope.input = {};
+	  $scope.classes = {};
 	  getAllCourses();
 	});
     };
@@ -157,12 +157,13 @@ angular.module('GradingApp.controllers', [])
 	});
 
 	$scope.input = {};
-	$scope.assignments = [];
+	$scope.assignment = [];
+
 
     function getAllAssignments(){
-	classService.getAssignments()
+	assignmentService.getAssignments()
 	.then(function(result){
-	  $scope.assignments = result.data.data;
+	  $scope.assignment = result.data.data;
 	});
     }
 
@@ -190,6 +191,7 @@ angular.module('GradingApp.controllers', [])
 	  $scope.input = {};
 	  getAllAssignments();
 	});
+
     };
 
     $scope.delete_Assignment = function(id)
@@ -311,6 +313,7 @@ angular.module('GradingApp.controllers', [])
 	return $http.post(getUrl(), title);
     }
 
+
     deleteStudent = function(id){
 	return $http.delete(getUrlForId(id));
     }
@@ -323,7 +326,9 @@ angular.module('GradingApp.controllers', [])
 
 })
 
-.controller('CourseCtrl', function($scope, $stateParams) {
+.controller('CourseCtrl', function($scope, $stateParams, $ionicModal) {
+
+
 })
 .controller("CameraController", function ($scope, $cordovaCamera) {
  
