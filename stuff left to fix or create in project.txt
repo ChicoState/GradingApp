@@ -2,5 +2,5 @@ Figured it might help with coordination on what to fix or create to get the proj
 for the group to look at. Since this week appears to have issues with getting a total group meeting.
 You basically just post what needs to be done or fixed(name any relevant files), and if someone manages to do so, they update the posting for that item. 
 
-· 
+Â· clicking on the gradebook link(after clicking on a class listed on starting page) just leads it to the splash page instead of the gradebook.
 
