@@ -1,6 +1,11 @@
 /** controllers.js
  */
 
+var currentClass {
+	Id: null,
+	Name: null
+};
+
 angular.module('GradingApp.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
@@ -82,6 +87,12 @@ angular.module('GradingApp.controllers', [])
     {
         $scope.modal.show();
     };
+
+    $scope.show_current_course(Id, Name){
+	
+	currentClass.Id = Id;
+	currentClass.Name = Name;
+    }
 
     /** return to homepage
      */
@@ -273,11 +284,12 @@ angular.module('GradingApp.controllers', [])
 
     /** update course list
      */
-    $scope.add_student = function()
+    $scope.add_student = function(className)
     {
       studentsService.addStudent($scope.input)
         .then(function(result){
 	  $scope.input = {};
+	  $scope.input.className = className;
 	  getAllStudents();
 	});
     };

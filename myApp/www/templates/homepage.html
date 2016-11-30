@@ -9,13 +9,13 @@
                     <div class="item item-button" style=background-color:rgb(50,50,255);height:300px;overflow-y:scroll; ng-show="courses.length > 3">
                         <div ng-repeat="course in courses">
                             <div ng-show="$index != (courses.length -1)" style="padding-bottom:20px">
-                                <button class="button button-block button-positive" style="background-color:rgb({{56 - ($index * 10)}},{{126 - ($index * 10)}},{{245 - ($index * 10)}})" onclick="window.location.href='#/app/homepage/{{ courses.id }}'">
-                                    {{ course.className }}
+                                <button class="button button-block button-positive" style="background-color:rgb({{56 - ($index * 10)}},{{126 - ($index * 10)}},{{245 - ($index * 10)}})" ng-click="show_current_course(course.id, course.ClassName)">
+                                    {{ course.ClassName }}
                                 </button>
                             </div>
                             <div ng-show="$index == (courses.length - 1)">
                                 <button class="button button-block button-positive" style="background-color:rgb({{56 - ($index * 10)}},{{126 - ($index * 10)}},{{245 - ($index * 10)}})" onclick="window.location.href='#/app/homepage/{{ courses.id }}'">
-                                    {{ course.className }}
+                                    {{ course.ClassName }}
                                 </button>
                             </div>
                         </div>
@@ -24,12 +24,12 @@
                         <div ng-repeat="course in courses">
                             <div ng-show="$index != (courses.length -1)" style="padding-bottom:20px">
                                 <button class="button button-block button-positive" style="background-color:rgb({{56 - ($index * 10)}},{{126 - ($index * 10)}},{{245 - ($index * 10)}})" onclick="window.location.href='#/app/homepage/{{ courses.id }}'">
-                                    {{ course.className }}
+                                    {{ course.ClassName }}
                                 </button>
                             </div>
                             <div ng-show="$index == (courses.length - 1)">
                                 <button class="button button-block button-positive" style="background-color:rgb({{56 - ($index * 10)}},{{126 - ($index * 10)}},{{245 - ($index * 10)}})" onclick="window.location.href='#/app/homepage/{{ courses.id }}'">
-                                    {{ course.className }}
+                                    {{ course.ClassName }}
                                 </button>
                             </div>
                         </div>
