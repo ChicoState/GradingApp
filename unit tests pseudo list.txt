@@ -1,0 +1,7 @@
+This is just a list of unit tests we need to code when we get there:
+
+· make sure empty input isn't entered.
+· make sure alphabetical input(not numerical), is entered in course name or any other name, inputs.
+· make sure numerical input(not alphabetical) is entered in grade points input
+· make sure valid number(no -20 in a assignment with 0-100 point range) is entered in grade points input
+
