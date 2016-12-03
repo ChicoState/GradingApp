@@ -246,7 +246,15 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers', 'ngCordova'])
         }
       }
   }) 
-
+  .state('app.ocr', {
+      url: '/ocr',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/ocr.html',
+          controller: 'HomeController'
+        }
+      }
+  }) 
 //// templates/page13.html doesn't exist
 //
 //  .state('app.page13', {
