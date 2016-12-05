@@ -4,10 +4,10 @@
         <center>
             <h1>My Classes</h1>
             <br>
-            <div>
+            <div><!--
                 <div class="list list-inset" ng-show="courses.length != 0">
                     <div class="item item-button" style=background-color:rgb(50,50,255);height:300px;overflow-y:scroll; ng-show="courses.length > 3">
-                        <div ng-repeat="course in courses">
+                        <ion-item ng-repeat="course in courses" href="#app/{{courses.id}}">
                             <div ng-show="$index != (courses.length -1)" style="padding-bottom:20px">
                                 <button class="button button-block button-positive" style="background-color:rgb({{56 - ($index * 10)}},{{126 - ($index * 10)}},{{245 - ($index * 10)}})" ng-click="show_current_course(course.id, course.ClassName)">
                                     {{ course.ClassName }}
@@ -18,7 +18,7 @@
                                     {{ course.ClassName }}
                                 </button>
                             </div>
-                        </div>
+                        </ion-item>
                     </div>
                     <div class="item item-button" style="background-color:rgb(50,50,255)" ng-show="courses.length <= 3">
                         <div ng-repeat="course in courses">
@@ -34,7 +34,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
+
+		<ion-list>
+		    <ion-item ng-repeat="course in courses" href="#/app/homepage/{{course.id}}">
+		      {{course.ClassName}}
+		    </ion-item>
                 <br>
                 <div>
                     <ion-item ng-click="show_add_course()">

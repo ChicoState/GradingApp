@@ -13,18 +13,17 @@
   		<span style="font-weight:bold">Edit Assignment</span>
 	</a>
 
-		<div>
-	<ion-scroll direction="y" style ="height: 250px">
 		<div class="list list-inset">
 
 		  <div class="item item-button">
 		    
-		    <ion-item ng-repeat="assignment in assignments">
-	        	{{assignment.title}}
-	      	</ion-item>
+		    <div ng-repeat="assignment in assignments">
+		      <button class="button button-block button-positive" onclick="window.location.href='#app/homepage/{{ assignment.id }}'">
+	        	{{assignment.AssignmentName}}
+		      </button>
+	      	    </div>
 		  </div>
 
-		</div>
 
 	<center><div class="bar">
 	  <a class="button button-block" href="#app/homepage">Class Home</a>

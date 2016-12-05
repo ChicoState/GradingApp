@@ -1,9 +1,10 @@
 /** controllers.js
  */
 
-var currentClass {
+var currentClass = {
 	Id: null,
-	Name: null
+	Name: null,
+	Class: null
 };
 
 angular.module('GradingApp.controllers', [])
@@ -40,44 +41,36 @@ angular.module('GradingApp.controllers', [])
     };
 })
 
-.controller('HomePageCtrl', function($scope, $ionicModal, classService) {
+
+.controller('HomePageCtrl', function($scope, $rootScope, $ionicModal, classService) {
 
 
-    /** add a course functionality
-     */
+    // add a course functionality
+     
     $ionicModal.fromTemplateUrl('templates/add_course_page3.html', {
         scope: $scope
     }).then(function(modal)
     {
         $scope.modal = modal;
     });
+    
 
+    /*var changePage = function(page){
+	$ionicModal.fromTemplateUrl(page, {
+	    scope: $scope
+	}).then(function(modal){
+	    $scope.modal = modal;
+	});
+    };*/
     /** app data: need to tie in with json/database
      */
-    $scope.classes = {};
-    $scope.courses = [];
-
-    /*function dataService($http, Backand){
-	var vm = this;
-
-	vm.getList = function(name, sort, filter){
-	  return $http({
-	    method: 'GET',
-	    url: Backand.getApiUrl() + '/1/objects/' + name,
-	    params: {
-		pageSize: 20,
-		pageNumber: 1,
-		filter: filter || '',
-		sort: sort || ''
-	    }
-	  });
-	}
-    }*/
+    $rootScope.classes = {};
+    $rootScope.courses = [];
 
     function getAllCourses(){
 	classService.getClasses()
 	.then(function(result){
-	  $scope.courses = result.data.data;
+	  $rootScope.courses = result.data.data;
 	});
     }
 
@@ -85,10 +78,10 @@ angular.module('GradingApp.controllers', [])
      */
     $scope.show_add_course = function()
     {
-        $scope.modal.show();
+	$scope.modal.show();
     };
 
-    $scope.show_current_course(Id, Name){
+    $scope.show_current_course = function(Id, Name){
 	
 	currentClass.Id = Id;
 	currentClass.Name = Name;
@@ -96,19 +89,18 @@ angular.module('GradingApp.controllers', [])
 
     /** return to homepage
      */
-    $scope.close_add_course = function()
+    $scope.close_add_course = function(test)
     {
         $scope.modal.hide();
-
     };
 
     /** update course list
      */
-    $scope.add_course = function()
+    $rootScope.add_course = function()
     {
-      classService.addClass($scope.classes)
+      classService.addClass($rootScope.classes)
         .then(function(result){
-	  $scope.classes = {};
+	  $rootScope.classes = {};
 	  getAllCourses();
 	});
     };
@@ -159,7 +151,7 @@ angular.module('GradingApp.controllers', [])
 
 })
 
-.controller('AssignmentsCtrl', function($scope, $ionicModal, assignmentService) {
+.controller('AssignmentsCtrl', function($scope, $rootScope, $ionicModal, assignmentService) {
 	$ionicModal.fromTemplateUrl('templates/page10.html', {
 	scope: $scope
 	}).then(function(modal)
@@ -167,14 +159,14 @@ angular.module('GradingApp.controllers', [])
 		$scope.modal = modal;
 	});
 
-	$scope.input = {};
-	$scope.assignment = [];
+	$rootScope.assignments = {};
+	$rootScope.assignment = [];
 
 
     function getAllAssignments(){
 	assignmentService.getAssignments()
 	.then(function(result){
-	  $scope.assignment = result.data.data;
+	  $rootScope.assignment = result.data.data;
 	});
     }
 
@@ -197,9 +189,10 @@ angular.module('GradingApp.controllers', [])
      */
     $scope.add_assignment = function()
     {
-      assignmentService.addAssignment($scope.input)
+      $rootScope.assignments.ClassName = currentClass.Class;
+      assignmentService.addAssignment($rootScope.assignments)
         .then(function(result){
-	  $scope.input = {};
+	  $rootScope.assignments = {};
 	  getAllAssignments();
 	});
 
@@ -248,7 +241,7 @@ angular.module('GradingApp.controllers', [])
 
 })
 
-.controller('studentsCtrl', function($scope, $ionicModal, studentsService) {
+.controller('studentsCtrl', function($scope, $rootScope, $ionicModal, studentsService) {
 
 	$ionicModal.fromTemplateUrl('templates/page8.html', {
 	scope: $scope
@@ -257,13 +250,13 @@ angular.module('GradingApp.controllers', [])
 		$scope.modal = modal;
 	});
 
-	$scope.input = {};
-	$scope.students = [];
+	$rootScope.input = {};
+	$rootScope.students = [];
 
     function getAllStudents(){
 	studentsService.getStudents()
 	.then(function(result){
-	  $scope.students = result.data.data;
+	  $rootScope.students = result.data.data;
 	});
     }
 
@@ -284,12 +277,18 @@ angular.module('GradingApp.controllers', [])
 
     /** update course list
      */
-    $scope.add_student = function(className)
+    $rootScope.add_student = function()
     {
-      studentsService.addStudent($scope.input)
-        .then(function(result){
-	  $scope.input = {};
-	  $scope.input.className = className;
+      /*for (var i = 0; i < $rootScope.courses.length; i++){
+	if ($rootScope.courses[i].id == currentClass.Id){
+		$rootScope.courses[i].students
+	}
+      }*/
+      $rootScope.input.ClassName = currentClass.Class;
+      studentsService.addStudent($rootScope.input)
+        .then(function(result)
+	{
+	  $rootScope.input = {};
 	  getAllStudents();
 	});
     };
@@ -338,8 +337,17 @@ angular.module('GradingApp.controllers', [])
 
 })
 
-.controller('CourseCtrl', function($scope, $stateParams, $ionicModal) {
+.controller('CourseCtrl', function($scope, $rootScope, $stateParams, $ionicModal) {
+	var id = $stateParams.courseId;
 
+	currentClass.Id = id;
+	for (var i = 0; i < $rootScope.courses.length; i++){
+		if (currentClass.Id == $rootScope.courses[i].id){
+			currentClass.Name = $rootScope.courses[i].ClassName;
+			currentClass.Class = $rootScope.courses[i];
+			console.log(currentClass.Name);
+		}
+	}
 
 })
 .controller("CameraController", function ($scope, $cordovaCamera) {
