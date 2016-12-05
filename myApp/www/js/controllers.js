@@ -161,12 +161,17 @@ angular.module('GradingApp.controllers', [])
 
 	$rootScope.assignments = {};
 	$rootScope.assignment = [];
-
+	$scope.current_assignments = [];
 
     function getAllAssignments(){
 	assignmentService.getAssignments()
 	.then(function(result){
 	  $rootScope.assignment = result.data.data;
+          for (var i = 0; i < $rootScope.assignment.length; i++){
+	      if (currentClass.Id == $rootScope.assignment[i].ClassName){
+                  $scope.current_assignments.push($rootScope.assignment[i]);
+	      }
+	  }
 	});
     }
 
@@ -252,11 +257,18 @@ angular.module('GradingApp.controllers', [])
 
 	$rootScope.input = {};
 	$rootScope.students = [];
+	$scope.current_students = [];
+
 
     function getAllStudents(){
 	studentsService.getStudents()
 	.then(function(result){
 	  $rootScope.students = result.data.data;
+          for (var i = 0; i < $rootScope.students.length; i++){
+              if (currentClass.Id == $rootScope.students[i].ClassName){
+		  $scope.current_students.push($rootScope.students[i]);
+               }
+	  }
 	});
     }
 
@@ -279,12 +291,9 @@ angular.module('GradingApp.controllers', [])
      */
     $rootScope.add_student = function()
     {
-      /*for (var i = 0; i < $rootScope.courses.length; i++){
-	if ($rootScope.courses[i].id == currentClass.Id){
-		$rootScope.courses[i].students
-	}
-      }*/
       $rootScope.input.ClassName = currentClass.Class;
+      $rootScope.classes.students = $rootScope.input;
+      console.log($rootScope.classes.students);
       studentsService.addStudent($rootScope.input)
         .then(function(result)
 	{
@@ -301,6 +310,15 @@ angular.module('GradingApp.controllers', [])
     }
 
     getAllStudents();
+    console.log($rootScope.students.length);
+
+    for (var i = 0; i < $rootScope.students.length; i++){
+                        console.log($rootScope.students[i].ClassName.id);
+		if (currentClass.Id == $rootScope.students[i].ClassName.id){
+			console.log($rootScope.students[i].ClassName.id);
+			$scope.current_students.push($rootScope.students[i]);
+		}
+    }
 
 })
 
@@ -341,6 +359,7 @@ angular.module('GradingApp.controllers', [])
 	var id = $stateParams.courseId;
 
 	currentClass.Id = id;
+	console.log($rootScope.courses.length);
 	for (var i = 0; i < $rootScope.courses.length; i++){
 		if (currentClass.Id == $rootScope.courses[i].id){
 			currentClass.Name = $rootScope.courses[i].ClassName;

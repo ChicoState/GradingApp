@@ -17,11 +17,9 @@
 
 		  <div class="item item-button">
 		    
-		    <div ng-repeat="assignment in assignments">
-		      <button class="button button-block button-positive" onclick="window.location.href='#app/homepage/{{ assignment.id }}'">
+		    <ion-item ng-repeat="assignment in current_assignments" href="#app/page9/{{assignment.id}}">
 	        	{{assignment.AssignmentName}}
-		      </button>
-	      	    </div>
+		    </ion-item>
 		  </div>
 
 
