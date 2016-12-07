@@ -213,7 +213,7 @@ angular.module('GradingApp', ['ionic', 'GradingApp.controllers', 'ngCordova', 'b
       views: {
         'menuContent': {
           templateUrl: 'templates/page12.html',
-          controller: 'CameraController'
+          controller: 'HomeController'
         }
       }
   })
