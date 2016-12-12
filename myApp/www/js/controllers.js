@@ -368,4 +368,17 @@ angular.module('GradingApp.controllers', [])
 		}
 	}
 
+})
+
+.controller('GradebookCtrl', function($scope, $rootScope, $stateParams){
+	var id = $stateParams.assignmentId;
+	var assignment;
+
+	for (var i = 0; i < $rootScope.assignments.length; i++){
+		if (id == $rootScope.assignments[i].id){
+		assignment = $rootScope.assignment[i];	
+		}
+	}
+
+
 });
